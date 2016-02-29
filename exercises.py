@@ -3,7 +3,8 @@ def reverse_list(l):
     """
     Reverses order of elements in list l.
     """
-    return None
+    l.reverse()
+    return l
 
 
 def test_reverse_list():
@@ -16,7 +17,8 @@ def reverse_string(s):
     """
     Reverses order of characters in string s.
     """
-    return None
+    x =  s[::-1]
+    return x
 
 
 def test_reverse_string():
@@ -30,7 +32,12 @@ def is_english_vowel(c):
     Returns True if c is an english vowel
     and False otherwise.
     """
-    return None
+    a= 'aeiouyAEIOUY'
+    if c in a:
+	return True
+    else:
+	return False
+
 
 
 def test_is_english_vowel():
@@ -57,7 +64,12 @@ def count_num_vowels(s):
     """
     Returns the number of vowels in a string s.
     """
-    return None
+    a = 'aeiouyAEIOUY'
+    count = 0
+    for letter in s:
+	if letter in a:
+		count = count + 1
+    return count
 
 
 def test_count_num_vowels():
@@ -93,7 +105,12 @@ def get_word_lengths(s):
     Returns a list of integers representing
     the word lengths in string s.
     """
-    return None
+    l=[]
+    words = s.split()
+    for word in words:
+ 	leng = len(word)
+	l.append(leng)
+    return l
 
 
 def test_get_word_lengths():
@@ -108,7 +125,8 @@ def find_longest_word(s):
     Returns the longest word in string s.
     In case there are several, return the first.
     """
-    return None
+    x = max(s.split(), key=len)
+    return x
 
 
 def test_find_longest_word():
@@ -125,7 +143,12 @@ def validate_dna(s):
     Return True if the DNA string only contains characters
     a, c, t, or g (lower or uppercase). False otherwise.
     """
-    return None
+    nuc = ('ATCGatcg')
+    leng = len(s)
+    if s.count('A')+s.count('C')+s.count('T')+s.count('G')+s.count('a')+s.count('c')+s.count('t')+s.count('g') == leng:
+        return True
+    else:
+        return False
 
 
 def test_validate_dna():
@@ -142,7 +165,12 @@ def base_pair(c):
     of the base pair. If the base is not recognized,
     return 'unknown'.
     """
-    return None
+    dic = {'a':'t', 't':'a','c':'g','g':'c','A':'t','T':'a','C':'g','G':'c'}
+    for amino in c:
+        if amino in dic:
+                return dic[amino]
+        else:
+                return 'unknown'
 
 
 def test_base_pair():
@@ -165,8 +193,10 @@ def transcribe_dna_to_rna(s):
     Return string s with each letter T replaced by U.
     Result is always uppercase.
     """
-    return None
-
+    
+    s = s.replace('T', 'U').replace('t', 'U').replace('a', 'A').replace('c', 'C').replace('g', 'G')
+    
+    return  s
 
 def test_transcribe_dna_to_rna():
     dna = 'CCGGAAGAGCTTACTTAGccggaagagcttacttag'
@@ -180,7 +210,25 @@ def get_complement(s):
     Return the DNA complement in uppercase
     (A -> T, T-> A, C -> G, G-> C).
     """
-    return None
+    s1 = ''
+    for letter in s:
+	if letter=='a':
+		s1=s1+'T'
+	if letter=='c':
+		s1=s1+'G'
+	if letter=='t':
+		s1=s1+'A'
+	if letter=='g':
+		s1=s1+'C'
+	if letter=='A':
+		s1=s1+'T'
+	if letter=='C':
+		s1=s1+'G'
+	if letter=='T':
+		s1=s1+'A'
+	if letter=='G':
+		s1=s1+'C'
+    return s1
 
 
 def test_get_complement():
@@ -195,7 +243,27 @@ def get_reverse_complement(s):
     Return the reverse complement of string s
     (complement reversed in order).
     """
-    return None
+    s1 = ''
+    for letter in s:
+        if letter=='a': 
+                s1=s1+'T'
+        if letter=='c': 
+                s1=s1+'G'
+        if letter=='t': 
+                s1=s1+'A'
+        if letter=='g': 
+                s1=s1+'C'
+        if letter=='A': 
+                s1=s1+'T'
+        if letter=='C': 
+                s1=s1+'G'
+        if letter=='T': 
+                s1=s1+'A'
+        if letter=='G': 
+                s1=s1+'C'   
+
+    s1 = s1[::-1]
+    return s1
 
 
 def test_get_reverse_complement():
@@ -209,8 +277,9 @@ def remove_substring(substring, string):
     """
     Returns string with all occurrences of substring removed.
     """
-    return None
-
+    if substring in  string:
+          return  string.replace(substring,'')
+         
 
 def test_remove_substring():
     assert remove_substring('GAA', 'CCGGAAGAGCTTACTTAG') == 'CCGGAGCTTACTTAG'
@@ -227,7 +296,7 @@ def get_position_indices(triplet, dna):
     in a DNA sequence. We start counting from 0
     and jump by 3 characters from one position to the next.
     """
-    return None
+    
 
 
 def test_get_position_indices():
